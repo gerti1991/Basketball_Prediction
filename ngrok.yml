@@ -1,0 +1,6 @@
+authtoken: 2b7mKA6rLMzrkWlvr866FnPyODp_4MXCFMtHp1W1UTaommgL3
+tunnels:
+  my_tunnel:
+    proto: http
+    addr: 8000
+    hostname: pure-dogfish-properly.ngrok-free.app
