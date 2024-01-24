@@ -1,0 +1,6 @@
+Upload_TS_PS_toMongo: Ok
+final_BPM: Ok
+spread_Players: Ok
+prediction_BPM: Ok
+predict_Market_Bet: Ok
+status: Ok

@@ -7,13 +7,17 @@ import os
 # os.chdir("..")
 
 # Check the current directory again
-# current_directory = os.getcwd()
-# print("Current Directory after cd ..:", current_directory)
+current_directory = os.getcwd()
 
+# print("Current Directory after cd ..:", current_directory)
+# parent_directory = os.path.dirname(current_directory)
+# os.chdir(parent_directory)
+# current_directory = os.getcwd()
+# print(current_directory)
 
 # Directory where your scripts are located
-scripts_directory = "C:\\Users\\tiran\\Basketball_Predictions"
-os.chdir(scripts_directory)
+# scripts_directory = "C:\\Users\\tiran\\Basketball_Predictions"
+os.chdir(current_directory)
 
 # Replace with your Telegram bot token and chat ID
 TELEGRAM_BOT_TOKEN = '6313757405:AAESPj-GRvysErDK9Q6wMLg5nOjMk83z8TI'

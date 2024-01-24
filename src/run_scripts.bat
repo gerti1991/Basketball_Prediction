@@ -1,5 +1,17 @@
 @echo off
 
-CALL C:\Users\tiran\Basketball_Predictions\env\Scripts\activate
-python C:\Users\tiran\Basketball_Predictions\src\main.py
+REM Go up one directory from the current script's location
+cd %~dp0..
+SET "current_dir=%cd%"
+
+REM Activate the virtual environment
+CALL "%current_dir%\env\Scripts\activate"
+
+REM Run the Python script and optionally capture output
+python "%current_dir%\src\main.py" > "%current_dir%\output.txt"
+
+REM Deactivate the virtual environment
 deactivate
+
+REM Pause the script to see any messages before it closes (optional)
+pause
