@@ -6,7 +6,7 @@ import numpy as np
 import concurrent.futures
 from connectors import mongo_connect,add_to_mongo
 
-url = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/events/closing-spreads/"
+url = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/events/spreads/"
 
 payload={}
 files={}
@@ -20,9 +20,9 @@ try:
     response = requests.request("GET", url, headers=headers, data=payload, files=files)
     data = response.json()
 
-    df = pd.DataFrame(data)
-
-
+    df1 = pd.DataFrame(data)
+    df = df1[df1['status']=='Finished']
+    # df =df1[df1['status']=='Scheduled']   
     unique_home_leagues = df['league_name'].unique().tolist()
     supremacy_forcast = {'league_name':[],'Team':[],'Ratings':[]}
 
@@ -139,6 +139,11 @@ try:
         events_stats = events
         data_dict_events_stats = events_stats.to_dict("records")
         add_to_mongo(data_dict_events_stats,'events_stats')
+
+        Market_spreads = df1.to_dict("records")
+        add_to_mongo(Market_spreads,'market_spreads')
+        
+
 
     except Exception as e:
         print(f"An error occurred: {e}")
