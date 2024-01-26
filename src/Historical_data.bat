@@ -8,7 +8,7 @@ REM Activate the virtual environment
 CALL "%current_dir%\env\Scripts\activate"
 
 REM Run the Python script and optionally capture output
-python "%current_dir%\src\main.py"
+python "%current_dir%\src\Update_Historical_Data.py"
 
 REM Deactivate the virtual environment
 deactivate
