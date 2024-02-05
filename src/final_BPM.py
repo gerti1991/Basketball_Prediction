@@ -228,7 +228,6 @@ try:
 
     team_sums = BPM.groupby(['Team', 'Season', 'League']).sum()
     BPM = BPM.merge(team_sums['Contrib'], on=['Team', 'Season', 'League'], suffixes=('', '_Sum'))
-
     BPM['Tm Adj.'] = (BPM['Adj. Tm Rtg']-BPM['Contrib_Sum'])/5
     BPM['BPM'] = BPM['Raw BPM'] + BPM['Tm Adj.']
 
@@ -276,6 +275,8 @@ try:
     FINAL_temp['Minutes'] = FINAL_temp['MP']
     FINAL_temp['MPG'] = FINAL_temp['MP']/FINAL_temp['G']
     FINAL_temp = merge_rows(BPM,FINAL_temp,Row_to_add=['BPM'])
+    # FINAL_temp['trader rating'] = np.nan  # This adds a new column with NaN values
+    # FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
     FINAL_temp = merge_rows(OBPM,FINAL_temp,Row_to_add=['OBPM'])
     FINAL_temp['DBPM'] = FINAL_temp['BPM'] - FINAL_temp['OBPM']
     FINAL_temp['Contrib'] = FINAL_temp['BPM']*FINAL_temp['% Min']
@@ -301,6 +302,25 @@ try:
     # Convert DataFrame to dictionary
     data_dict = final_df.to_dict("records")
     add_to_mongo(data_dict,'BPM_Player')
+    average_bpm_df = final_df.groupby(['League', 'Team'])['BPM'].mean().reset_index()
+    average_bpm_df.rename(columns={'BPM': 'Average_BPM'}, inplace=True)
+
+
+    
+    av_points = 80  
+    average_bpm_df['Att_MIS'] = average_bpm_df['Average_BPM'] / av_points + \
+                            (-average_bpm_df['Average_BPM'] / av_points + 
+                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+    average_bpm_df['Def_MIS'] = (-average_bpm_df['Average_BPM'] / av_points + 
+                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+    
+
+
+    # print(average_bpm_df)
+
+    data_dict = average_bpm_df.to_dict("records")
+    add_to_mongo(data_dict,'BPM_squad')
+
     print("Ok")
 except Exception as e:
     print(f"Error: {e}")  # Print the error message if an exception occurs

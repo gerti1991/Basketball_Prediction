@@ -44,3 +44,17 @@ def get_events_stats():
     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return events
 
+team_stats_collection = db.team_stats
+@app.get("/team_stats")
+def get_events_stats():
+    events = list(team_stats_collection.find({}, {"_id": 0}))  # Fetch data, excluding the _id field
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+
+BPM_squad_collection = db.BPM_squad
+@app.get("/BPM_squad")
+def get_events_stats():
+    events = list(BPM_squad_collection.find({}, {"_id": 0}))  # Fetch data, excluding the _id field
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+

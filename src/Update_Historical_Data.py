@@ -51,6 +51,7 @@ def add_to_historical(source_collection_name, historical_collection_name):
 try:
     add_to_historical("market_bet", "market_bet_his")
     add_to_historical("BPM_Player", "BPM_Player_his")
+    add_to_historical("BPM_squad", "BPM_squad_his")
     send_telegram_message(f"Update_Historical_Data: Ok")
 
 

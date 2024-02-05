@@ -78,12 +78,35 @@ try:
     events_stats = events
     # Convert DataFrame to dictionary
     data_dict_player_stats = player_stats.to_dict("records")
-    data_dict_team_stats = team_stats.to_dict("records")
     data_dict_events_stats = events_stats.to_dict("records")
     add_to_mongo(data_dict_player_stats,'player_stats')
-    add_to_mongo(data_dict_team_stats,'team_stats')
     add_to_mongo(data_dict_events_stats,'events_stats')
     
+
+
+    # Calculate Points Per Possession (PPP) and Points Per Possession Conceded (PPC) for each team
+    TS['PPP'] = ((TS['Offensive Rating'] / 100) / (TS['Possessions'] / TS['Games Played'])) * TS['Pace']
+    TS['PPC'] = ((TS['Defensive Rating'] / 100) / (TS['Possessions'] / TS['Games Played'])) * TS['Pace']
+
+    # Initialize columns for attacking and defensive strengths, and league pace
+    TS['Attacking Strength'] = 0.0
+    TS['Defensive Strength'] = 0.0
+    TS['Pace_league'] = 0.0
+
+    # Loop through each league to calculate and assign league averages and strengths
+    for league in TS['League'].unique():
+        league_df = TS[TS['League'] == league]
+        league_avg_ppp_offense = league_df['PPP'].mean()
+        league_avg_ppc_defense = league_df['PPC'].mean()
+        league_avg_pace = league_df['Pace'].mean()
+        TS.loc[TS['League'] == league, 'Attacking Strength'] = league_df['PPP'] / league_avg_ppp_offense
+        TS.loc[TS['League'] == league, 'Defensive Strength'] = league_df['PPC'] / league_avg_ppc_defense
+        TS.loc[TS['League'] == league, 'Pace_league'] = league_df['Pace'] / league_avg_pace
+    coff = 82
+    TS['Sup Rating'] = (TS['Attacking Strength']*coff) - (TS['Defensive Strength']*coff)
+    print(TS[['League','Team','PPP','PPC','Attacking Strength','Defensive Strength','Pace_league','Sup Rating']])
+    data_dict_team_stats = team_stats.to_dict("records")
+    add_to_mongo(data_dict_team_stats,'team_stats')
     print("Ok")
 
 except Exception as e:

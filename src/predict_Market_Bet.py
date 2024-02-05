@@ -112,8 +112,9 @@ try:
         # Wait for all threads to complete (optional if you need to do something after all threads are done)
         concurrent.futures.wait(futures)
 
-
-
+    av_points = 80  
+    df2['Att_MIS'] = df2['Ratings'] / av_points + (-(df2['Ratings'] / av_points) + np.sqrt((df2['Ratings'] / av_points) ** 2 + 4)) / 2
+    df2['Def_MIS'] = (-(df2['Ratings'] / av_points) + np.sqrt((df2['Ratings'] / av_points) ** 2 + 4)) / 2
     data_dict_market_bet = df2.to_dict("records")
     add_to_mongo(data_dict_market_bet,'market_bet')
 
@@ -121,6 +122,7 @@ try:
 
     try:
         events= mongo_connect('events_stats')
+        df2 = df2.drop(['Att_MIS', 'Def_MIS'], axis=1)
         events = events.merge(df2, left_on=['League', 'Home'], right_on=['league_name', 'Team'], how='left')
         events.rename(columns={'Ratings': 'Home_Ratings'}, inplace=True)
         # Merge for Away Teams
