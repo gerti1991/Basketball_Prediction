@@ -104,7 +104,7 @@ try:
         TS.loc[TS['League'] == league, 'Pace_league'] = league_df['Pace'] / league_avg_pace
     coff = 82
     TS['Sup Rating'] = (TS['Attacking Strength']*coff) - (TS['Defensive Strength']*coff)
-    print(TS[['League','Team','PPP','PPC','Attacking Strength','Defensive Strength','Pace_league','Sup Rating']])
+    # print(TS[['League','Team','PPP','PPC','Attacking Strength','Defensive Strength','Pace_league','Sup Rating']])
     data_dict_team_stats = team_stats.to_dict("records")
     add_to_mongo(data_dict_team_stats,'team_stats')
     print("Ok")
