@@ -152,7 +152,7 @@ try:
 
     # Final DataFrame
     B_Position = B_Position[common_cols + ['MP_TeamSum','MP','Pos Num', 'Est Pos 1', 'Min Adj 1', 'Trim 1', 'Trim 1_Tm_Avg', 'Adj Pos 2', 'Trim 2', 'Trim 2_Tm_Avg', 'Adj Pos 3', 'Trim 3', 'Trim 3_Tm_Avg', 'Adj Pos 4', 'Position']]
-
+    # print(B_Position[B_Position['Player']=='Simon Birgander'])
     # Estimate Positions:
     # Offensive Role
     O_Position = B_Position[['League', 'Season', 'Player', 'Team', 'MP', 'MP_TeamSum']]
@@ -168,7 +168,7 @@ try:
     for key in keys:
         PS_100_sub[key] = PS_100_sub[key] * Offensive_Role.get(key, 0)
     PS_100_sub['Est Off. Role 1'] = PS_100_sub[keys].sum(axis=1) + Offensive_Role['Intercept']
-
+    
     # Merge 'Est Off. Role 1' into O_Position
     O_Position = O_Position.merge(PS_100_sub[['League', 'Season', 'Player', 'Team', 'Est Off. Role 1']], on=['League', 'Season', 'Player', 'Team'], how='left')
 
@@ -194,7 +194,7 @@ try:
 
     O_Position['Adj Off. Role 4'] = O_Position['Min Adj 1'] - (O_Position['Tm Avg 1'] - 3) - (O_Position['Tm Avg 2'] - 3) - (O_Position['Tm Avg 3'] - 3)
     O_Position['Offensive Role'] = O_Position['Adj Off. Role 4'].clip(1, 5)
-
+    
     #Calculating BPM
 
 
@@ -230,7 +230,7 @@ try:
     BPM = BPM.merge(team_sums['Contrib'], on=['Team', 'Season', 'League'], suffixes=('', '_Sum'))
     BPM['Tm Adj.'] = (BPM['Adj. Tm Rtg']-BPM['Contrib_Sum'])/5
     BPM['BPM'] = BPM['Raw BPM'] + BPM['Tm Adj.']
-
+    
     #Calculating OBPM
     OBPM = B_Position[['League','Season','Player','Team','Position']]
     OBPM = merge_rows(O_Position,OBPM,Row_to_add=['Offensive Role'])
@@ -265,7 +265,7 @@ try:
 
     OBPM['Tm Adj.'] = (OBPM['Adj. ORtg']-OBPM['Contrib_Sum'])/5
     OBPM['OBPM'] = OBPM['Raw OBPM'] + OBPM['Tm Adj.']
-
+    
     # Final Stats
     FINAL_temp = B_Position[['League','Season','Player','Team','Position']]
     FINAL_temp = merge_rows(O_Position,FINAL_temp,Row_to_add=['Offensive Role'])
@@ -275,8 +275,9 @@ try:
     FINAL_temp['Minutes'] = FINAL_temp['MP']
     FINAL_temp['MPG'] = FINAL_temp['MP']/FINAL_temp['G']
     FINAL_temp = merge_rows(BPM,FINAL_temp,Row_to_add=['BPM'])
-    # FINAL_temp['trader rating'] = np.nan  # This adds a new column with NaN values
+    # FINAL_temp['trader rating'] = None
     # FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
+    # FINAL_temp['Missing'] = False
     FINAL_temp = merge_rows(OBPM,FINAL_temp,Row_to_add=['OBPM'])
     FINAL_temp['DBPM'] = FINAL_temp['BPM'] - FINAL_temp['OBPM']
     FINAL_temp['Contrib'] = FINAL_temp['BPM']*FINAL_temp['% Min']
@@ -287,6 +288,7 @@ try:
     FINAL_temp['ReBPM'] = (FINAL_temp['Minutes']*FINAL_temp['BPM']+FINAL_temp['ExpBPM']*FINAL_temp['ReMin'])/(FINAL_temp['Minutes']+FINAL_temp['ReMin'])
     FINAL_temp['ReOBPM'] = (FINAL_temp['Minutes']*FINAL_temp['OBPM']+FINAL_temp['ExpBPM']*FINAL_temp['ReMin'])/(FINAL_temp['Minutes']+FINAL_temp['ReMin'])
     FINAL_temp['ReDBPM'] = FINAL_temp['ReBPM']-FINAL_temp['ReOBPM']
+    
     FINAL = FINAL_temp[['League','Season','Player','Team','Position','Off Role','Minutes','MPG','BPM','OBPM','DBPM','Contrib','VORP','ReMPG','ReMin','ExpBPM','ReBPM','ReOBPM','ReDBPM','Pace','Team Rating','Off Rating']]
     rename_dict = {
         'Pace': 'Pace',
@@ -299,6 +301,7 @@ try:
 
     #Adding to mongo DB
     final_df = FINAL
+    
     # Convert DataFrame to dictionary
     data_dict = final_df.to_dict("records")
     add_to_mongo(data_dict,'BPM_Player')
@@ -307,7 +310,7 @@ try:
 
 
     
-    av_points = 80  
+    av_points = 84  
     average_bpm_df['Att_MIS'] = average_bpm_df['Average_BPM'] / av_points + \
                             (-average_bpm_df['Average_BPM'] / av_points + 
                              np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2

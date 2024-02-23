@@ -13,11 +13,11 @@ try:
             'French-Jeep-Elite':{'average_points':82,'home_advantage':3.58},
             'Italian-Lega-Basket-Serie-A':{'average_points':80,'home_advantage':3.14},
             'Spanish-ACB':{'average_points':82,'home_advantage':3.28},
-            'German-BBL':{'average_points':85,'home_advantage':1.73},
+            'German-BBL':{'average_points':84,'home_advantage':1.73},
             'Greek-HEBA-A1':{'average_points':78,'home_advantage':4.29}
         }
 
-        predictions = {'Event ID': [], 'Points_Away_Team': [], 'Points_Home_Team': [],'Points_Total_Team':[]}
+        predictions = {'Event ID': [], 'Prediction_Away_Team': [], 'Prediction_Home_Team': []}
 
         # Iterate through each row in table1 to calculate predictions
         for index, row in table1.iterrows():
@@ -38,25 +38,12 @@ try:
 
             # Update Away Team Prediction (Based on your provided calculation) 
             predictions['Event ID'].append(row['Event ID'])
-            predictions['Points_Away_Team'].append(away_row['Attacking Strength'] * 
+            predictions['Prediction_Away_Team'].append(away_row['Attacking Strength'] * 
                                                     home_row['Defensive Strength'] * 
                                                     home_row['Pace_league'] * 
                                                     away_row['Pace_league'] *
                                                     points[row['League']]['average_points'])
-            
-            predictions['Points_Home_Team'].append ( points[row['League']]['home_advantage'] + \
-                                                    home_row['Attacking Strength'] * \
-                                                    away_row['Defensive Strength'] * \
-                                                    away_row['Pace_league'] * \
-                                                    home_row['Pace_league'] * \
-                                                    points[row['League']]['average_points'])
-            
-            predictions['Points_Total_Team'].append(away_row['Attacking Strength'] * 
-                                                    home_row['Defensive Strength'] * 
-                                                    home_row['Pace_league'] * 
-                                                    away_row['Pace_league'] *
-                                                    points[row['League']]['average_points'] +\
-                                                    points[row['League']]['home_advantage'] + \
+            predictions['Prediction_Home_Team'].append ( points[row['League']]['home_advantage'] + \
                                                     home_row['Attacking Strength'] * \
                                                     away_row['Defensive Strength'] * \
                                                     away_row['Pace_league'] * \
@@ -71,25 +58,20 @@ try:
 
     predictions_df = pd.DataFrame(add_prediction_columns(events,TS))
 
-    if 'freeze' in events:
-        # predictions_df['Points_Away_Team'] = np.where(events['freeze'] == False,predictions_df['Points_Away_Team'],events['Points_Away_Team'])
-        # predictions_df['Points_Home_Team'] = np.where(events['freeze'] == False,predictions_df['Points_Home_Team'],events['Points_Home_Team'])
-        # predictions_df['Points_Total_Team'] = np.where(events['freeze'] == False,predictions_df['Points_Total_Team'],events['Points_Total_Team'])
-
-        predictions_df['Prediction_Home_Team'] = np.where(events['freeze'] == False,-1*( predictions_df['Points_Home_Team']- predictions_df['Points_Away_Team']),events['Prediction_Home_Team'])
-        predictions_df['Prediction_Away_Team'] = np.where(events['freeze'] == False,-1* predictions_df['Prediction_Home_Team'],events['Prediction_Away_Team'])
-    else:
-        predictions_df['Prediction_Home_Team'] = -1*( predictions_df['Points_Home_Team']- predictions_df['Points_Away_Team'])
-        predictions_df['Prediction_Away_Team'] = -1* predictions_df['Prediction_Home_Team']
+    # if 'freeze' in events:
+    #     predictions_df['Prediction_Home_Team'] = np.where(events['freeze'] == False,-1*( predictions_df['Prediction_Home_Team']- predictions_df['Prediction_Away_Team']),events['Prediction_Home_Team'])
+    #     predictions_df['Prediction_Away_Team'] = np.where(events['freeze'] == False,-1* predictions_df['Prediction_Home_Team'],events['Prediction_Away_Team'])
+    # else:
+    predictions_df['Prediction_Home_Team'] = -1*( predictions_df['Prediction_Home_Team']- predictions_df['Prediction_Away_Team'])
+    predictions_df['Prediction_Away_Team'] = -1* predictions_df['Prediction_Home_Team']
     updated_table1 = pd.merge(events, predictions_df[['Event ID', 'Prediction_Away_Team', 'Prediction_Home_Team']], on='Event ID', how='left')
-    updated_table1.drop(['Prediction_Away_Team_x', 'Prediction_Home_Team_x',], axis=1, inplace=True)
+    updated_table1.drop(['Prediction_Away_Team_x', 'Prediction_Home_Team_x'], axis=1, inplace=True)
     updated_table1.rename(columns={'Prediction_Away_Team_y': 'Prediction_Away_Team',
                             'Prediction_Home_Team_y': 'Prediction_Home_Team'}, inplace=True)
 
 
     updated_table1['Prediction_Result_Team'] = np.where(updated_table1['Prediction_Home_Team']<updated_table1['Prediction_Away_Team'], 1, 0)
     updated_table1['Result_Spread_Team'] = np.where(updated_table1['Result']==0,(updated_table1['Away Score'] - updated_table1['Home Score'])+updated_table1['Prediction_Away_Team'],(updated_table1['Home Score'] - updated_table1['Away Score'])+updated_table1['Prediction_Home_Team'])
-    updated_table1['Result_Spread_Team2'] = (updated_table1['Home Score'] - updated_table1['Away Score']) - (-1*updated_table1['Prediction_Home_Team'])
     updated_table1['Prediction_eff_Team'] = np.where((updated_table1['Prediction_Result_Team'] - updated_table1['Result'] == 0) & (updated_table1['Result_Spread_Team'] >= 0), 1, 0)
 
     events_stats = updated_table1

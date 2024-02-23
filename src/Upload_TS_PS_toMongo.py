@@ -46,9 +46,9 @@ try:
     events = pd.DataFrame(events)
 
     trim_func = lambda x: x.strip() if isinstance(x, str) else x
-    PS = PS.applymap(trim_func)
-    TS = TS.applymap(trim_func)
-    events = events.applymap(trim_func)
+    PS = PS.map(trim_func)
+    TS = TS.map(trim_func)
+    events = events.map(trim_func)
 
 
     PS.columns = [[col.strip() for col in PS.columns]]
@@ -81,7 +81,7 @@ try:
     data_dict_events_stats = events_stats.to_dict("records")
     add_to_mongo(data_dict_player_stats,'player_stats')
     add_to_mongo(data_dict_events_stats,'events_stats')
-    
+
 
 
     # Calculate Points Per Possession (PPP) and Points Per Possession Conceded (PPC) for each team

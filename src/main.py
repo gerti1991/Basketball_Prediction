@@ -47,7 +47,7 @@ def run_script(script_name):
         print(f"{script_name}: {e.stderr.strip()}")
 
 # List of Python scripts to run
-scripts = ['Upload_TS_PS_toMongo.py', 'final_BPM.py', 'spread_Players.py','prediction_BPM.py','predict_Market_Bet.py','predict_Team.py','status.py']
+scripts = ['Upload_TS_PS_toMongo.py', 'final_BPM.py', 'spread_Players.py','prediction_BPM.py','predict_Market_Bet.py','predict_Team.py','Universal_Predict.py','status.py']
 
 for script in scripts:
     run_script(f"src\\{script}")

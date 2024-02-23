@@ -136,6 +136,7 @@ try:
             events['Prediction_Away_Market'] = (events['Prediction_Home_Market'])*-1
         events['Prediction_Result_Market'] = np.where(events['Prediction_Home_Market']<events['Prediction_Away_Market'], 1, 0)
         events['Result_Spread_Market'] = np.where(events['Result']==0,(events['Away Score'] - events['Home Score'])+events['Prediction_Away_Market'],(events['Home Score'] - events['Away Score'])+events['Prediction_Home_Market'])
+        events['Result_Spread_Market2'] = (events['Home Score'] - events['Away Score'])- (-1*events['Prediction_Home_Market'])
         events['Prediction_eff_Market'] = np.where((events['Prediction_Result_Market'] - events['Result'] == 0) & (events['Result_Spread_Market'] >= 0), 1, 0)
         events.drop(['Home_Ratings','Away_Ratings','Att_MIS_x','Att_MIS_y','Def_MIS_x','Def_MIS_y','Team_x','Team_y','league_name_x','league_name_y'], axis=1, inplace=True, errors='ignore')
         events_stats = events
