@@ -15,7 +15,10 @@ try:
 
     for index, row in events.iterrows():
         if 'freeze' in row and row['freeze'] == True:
-            status['Updated'].append(row['Updated'])#row['Updated']
+            if pd.isna(row['Updated']):
+                status['Updated'].append(datetime.now())
+            else:
+                status['Updated'].append(row['Updated'])#row['Updated']
             status['freeze'].append(row['freeze'])
             status["Event ID"].append(row['Event ID'])
             continue
@@ -47,3 +50,17 @@ try:
     print("Ok")
 except Exception as e:
     print(f"Error: {e}")  # Print the error message if an exception occurs
+
+
+# events= mongo_connect('events_stats')
+
+# change = list(events[events['Prediction_Away_Market'].isna()]['Event ID'])
+# print(change)
+
+# for i in change:
+#     events.loc[events['Event ID'] == i, 'freeze'] = False
+
+# events_stats = events
+# data_dict_events_stats = events_stats.to_dict("records")
+# add_to_mongo(data_dict_events_stats,'events_stats')  
+

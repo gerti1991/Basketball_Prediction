@@ -42,9 +42,15 @@ try:
         if count2 == 10:
             team_2 = team_2[team_2['Missing']==False]
         if count1 != 10:
-            team_1 = team_1.sort_values(by='% MIN', ascending=False).head(10)
+            if count1>10:
+                team_1 = team_1[team_1['Missing']==False].sort_values(by='% MIN', ascending=False).head(10)
+            else:
+                team_1 = team_1.sort_values(by='% MIN', ascending=False).head(10)
         if count2 != 10:
-            team_2 = team_2.sort_values(by='% MIN', ascending=False).head(10)
+            if count2>10:
+                team_2 = team_2[team_2['Missing']==False].sort_values(by='% MIN', ascending=False).head(10)
+            else:
+                team_2 = team_2.sort_values(by='% MIN', ascending=False).head(10)
         nr_matches = nr_matches_(TS, league, season)
         # Perform calculations for team_1
         team_1['ADJ MIN'] = team_1['% MIN']/team_1['% MIN'].sum()*200 #240 is 5 player playing 48 minutes in NBA but in European is 5x40 200

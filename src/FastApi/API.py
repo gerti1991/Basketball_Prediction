@@ -11,6 +11,11 @@ from fastapi.encoders import jsonable_encoder
 from typing import List, Dict
 from pydantic import BaseModel, Field
 import pymongo
+import subprocess
+import logging
+import os
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
 app = FastAPI()
 
@@ -39,9 +44,11 @@ events_stats_collection2 = db.BPM_Player
 BPM_Player_Spread_collection = db.BPM_Player_Spread
 market_bet_his_collection = dbhs.market_bet_his
 BPM_squad_his_collection = dbhs.BPM_squad_his
+Teams_his_collection = dbhs.Teams_his
 
 
 async def update_trader_data(request_data: list):  # Expect a list of dicts
+    # print(request_data)
     updates = []
     for item in request_data:
         try:
@@ -50,9 +57,9 @@ async def update_trader_data(request_data: list):  # Expect a list of dicts
             return {"error": "Invalid _id format in item: {}".format(item)}
 
         # 'trader rating' conversion 
-        if 'trader rating' in item:
+        if 'trader_rating' in item:
             try:
-                trader_rating = float(item['trader rating'])
+                trader_rating = float(item['trader_rating'])
             except ValueError:
                 trader_rating = None  # Set to None if not numeric
 
@@ -79,9 +86,38 @@ async def update_trader_data(request_data: list):  # Expect a list of dicts
 def read_root():
     return {"Hello": "World"}
 
+# @app.get("/events-stats")
+# def get_events_stats():
+#     events = list(events_stats_collection.find({}, {"_id": 0}))
+#     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+#     return events
+
+
 @app.get("/events-stats")
-def get_events_stats():
-    events = list(events_stats_collection.find({}, {"_id": 0}))
+def get_events_stats(start: str = None, end: str = None,type=None):#,type=None
+    query = {}  # Start with an empty query
+
+    if start and end:
+        # Filter 2: Between start and end
+        query["Date"] = {"$gte": start, "$lte": end}
+
+    elif start:
+        # Filter 1: Greater than or equal to start
+        query["Date"] = {"$gte": start} 
+
+    elif end:
+        # Filter 3: Less than or equal to end 
+        query["Date"] = {"$lte": end} 
+    if type =='0':
+        query['Status'] = 'Finished'
+    elif type =='1':
+        query['Status'] = 'Scheduled'
+
+    print(query)
+    events = list(events_stats_collection.find(query, {"_id": 0}))
+
+
+
     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return events
 
@@ -154,22 +190,89 @@ def get_bpm_squad():
     return squad
 
 
-@app.get("/market_bet_his")
-def get_events_stats():
-    events = list(market_bet_his_collection.find({}, {"_id": 0}))
-    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
-    return events
+# @app.get("/market_bet_his")
+# def get_events_stats():
+#     events = list(market_bet_his_collection.find({}, {"_id": 0}))
+#     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+#     return events
 
 
 @app.get("/market_bet_his")
-def get_events_stats():
-    events = list(market_bet_his_collection.find({}, {"_id": 0}))
+def get_events_stats(start_week: str = None, end_week: str = None):
+    query = {}  # Start with an empty query
+
+    if start_week and end_week:
+        # Filter 2: Between start_week and end_week
+        query["Week"] = {"$gte": start_week, "$lte": end_week}
+
+    elif start_week:
+        # Filter 1: Greater than or equal to start_week
+        query["Week"] = {"$gte": start_week} 
+
+    elif end_week:
+        # Filter 3: Less than or equal to end_week 
+        query["Week"] = {"$lte": end_week} 
+
+
+    events = list(market_bet_his_collection.find(query, {"_id": 0}))
+
+
+
     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return events
+
+# @app.get("/BPM_squad_his")
+# def get_events_stats():
+#     events = list(BPM_squad_his_collection.find({}, {"_id": 0}))
+#     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+#     return events
 
 @app.get("/BPM_squad_his")
-def get_events_stats():
-    events = list(BPM_squad_his_collection.find({}, {"_id": 0}))
+def get_events_stats(start_week: str = None, end_week: str = None):
+    query = {}  # Start with an empty query
+
+    if start_week and end_week:
+        # Filter 2: Between start_week and end_week
+        query["Week"] = {"$gte": start_week, "$lte": end_week}
+
+    elif start_week:
+        # Filter 1: Greater than or equal to start_week
+        query["Week"] = {"$gte": start_week} 
+
+    elif end_week:
+        # Filter 3: Less than or equal to end_week 
+        query["Week"] = {"$lte": end_week} 
+
+
+    events = list(BPM_squad_his_collection.find(query, {"_id": 0}))
+
+
+
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+
+
+@app.get("/Teams_his")
+def get_events_stats(start_week: str = None, end_week: str = None):
+    query = {}  # Start with an empty query
+
+    if start_week and end_week:
+        # Filter 2: Between start_week and end_week
+        query["Week"] = {"$gte": start_week, "$lte": end_week}
+
+    elif start_week:
+        # Filter 1: Greater than or equal to start_week
+        query["Week"] = {"$gte": start_week} 
+
+    elif end_week:
+        # Filter 3: Less than or equal to end_week 
+        query["Week"] = {"$lte": end_week} 
+
+
+    events = list(Teams_his_collection.find(query, {"_id": 0}))
+
+
+
     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return events
 
@@ -179,3 +282,29 @@ def get_events_stats():
     events = list(events_statsv2_collection.find({}, {"_id": 0}))
     events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return events
+
+
+@app.post('/run_script')
+def run_my_script(request: Request):
+    current_directory = os.getcwd()
+    os.chdir(current_directory)
+
+    def run_script(script_name):
+        """Runs a script and reports its success or failure."""
+        command = f"cmd.exe /c \"python {script_name}\""
+        try:
+            result = subprocess.run(command, check=True, text=True, capture_output=True, shell=True)
+            script = script_name.replace("src\\", "").replace(".py", "")
+            print(f"{script}: {result.stdout.strip()}")
+            return result.stdout.strip()  # Return stdout
+        except subprocess.CalledProcessError as e:
+            print(f"{script_name}: {e.stderr.strip()}")
+            return e.stderr.strip()  # Return stderr
+
+    scripts = ['final_BPM.py', 'spread_Players.py', 'prediction_BPM.py', 'Universal_Predict.py', 'Odds_Creation.py']
+    output_list = []  # List to store outputs of each script
+    for script in scripts:
+        output = run_script(f"src\\{script}")
+        output_list.append({script: output})  # Append output to list
+
+    return JSONResponse({'output': output_list}, status_code=200)

@@ -14,7 +14,11 @@ try:
             'Italian-Lega-Basket-Serie-A':{'average_points':80,'home_advantage':3.14},
             'Spanish-ACB':{'average_points':82,'home_advantage':3.28},
             'German-BBL':{'average_points':85,'home_advantage':1.73},
-            'Greek-HEBA-A1':{'average_points':78,'home_advantage':4.29}
+            'Greek-HEBA-A1':{'average_points':78,'home_advantage':4.29},
+            'Turkish-BSL':{'average_points':82,'home_advantage':2.79},
+            'Italian-Serie-A2-Basket':{'average_points':75,'home_advantage':3.22},
+            'Croatian-A-1-Liga':{'average_points':81,'home_advantage':2.75},
+            'Serbian-KLS':{'average_points':82,'home_advantage':4.41}
         }
 
         predictions = {'Event ID': [], 'Points_Away_Team': [], 'Points_Home_Team': [],'Points_Total_Team':[]}

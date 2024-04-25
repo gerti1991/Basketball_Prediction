@@ -12,9 +12,9 @@ try:
 
 
     #Team stats
-    MP_G = 10
-    PS['MP_G'] = PS['MP']/PS['G']
-    PS = PS[PS['MP_G'] >= MP_G]
+    # MP_G = 10
+    # PS['MP_G'] = PS['MP']/PS['G']
+    # PS = PS[PS['MP_G'] >= MP_G]
     Coff_FTA = 0.44
 
     mean_offensive_rating = TS.groupby(['League', 'Season'])['Offensive Rating'].mean().reset_index()
@@ -275,9 +275,9 @@ try:
     FINAL_temp['Minutes'] = FINAL_temp['MP']
     FINAL_temp['MPG'] = FINAL_temp['MP']/FINAL_temp['G']
     FINAL_temp = merge_rows(BPM,FINAL_temp,Row_to_add=['BPM'])
-    FINAL_temp['trader rating'] = None
-    FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
-    FINAL_temp['Missing'] = False
+    # FINAL_temp['trader rating'] = None
+    # FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
+    # FINAL_temp['Missing'] = False
     FINAL_temp = merge_rows(OBPM,FINAL_temp,Row_to_add=['OBPM'])
     FINAL_temp['DBPM'] = FINAL_temp['BPM'] - FINAL_temp['OBPM']
     FINAL_temp['Contrib'] = FINAL_temp['BPM']*FINAL_temp['% Min']
@@ -289,7 +289,7 @@ try:
     FINAL_temp['ReOBPM'] = (FINAL_temp['Minutes']*FINAL_temp['OBPM']+FINAL_temp['ExpBPM']*FINAL_temp['ReMin'])/(FINAL_temp['Minutes']+FINAL_temp['ReMin'])
     FINAL_temp['ReDBPM'] = FINAL_temp['ReBPM']-FINAL_temp['ReOBPM']
     
-    FINAL = FINAL_temp[['League','Season','Player','Team','Position','Off Role','Minutes','MPG','BPM','OBPM','DBPM','Contrib','VORP','ReMPG','ReMin','ExpBPM','ReBPM','ReOBPM','ReDBPM','Pace','Team Rating','Off Rating','trader rating','Missing']]
+    FINAL = FINAL_temp[['League','Season','Player','Team','Position','Off Role','Minutes','MPG','BPM','OBPM','DBPM','Contrib','VORP','ReMPG','ReMin','ExpBPM','ReBPM','ReOBPM','ReDBPM','Pace','Team Rating','Off Rating']]
     rename_dict = {
         'Pace': 'Pace',
         'Team Rating': 'Rating',
@@ -298,31 +298,39 @@ try:
 
     FINAL.rename(columns=rename_dict, inplace=True)
 
-
+    
     #Adding to mongo DB
     final_df = FINAL
     
     # Convert DataFrame to dictionary
     data_dict = final_df.to_dict("records")
     add_to_mongo(data_dict,'BPM_Player')
-    average_bpm_df = final_df.groupby(['League', 'Team'])['BPM'].mean().reset_index()
-    average_bpm_df.rename(columns={'BPM': 'Average_BPM'}, inplace=True)
+
+    # Outliers removing
+    FINAL = mongo_connect('BPM_Player')
+    FINAL['Missing'] = np.where((FINAL['BPM']>=20) | (FINAL['BPM']<=-20),True, FINAL['Missing'])
+
+    data_dict = FINAL.to_dict("records")
+    add_to_mongo(data_dict,'BPM_Player')
+
+    # average_bpm_df = final_df.groupby(['League', 'Team'])['BPM'].mean().reset_index()
+    # average_bpm_df.rename(columns={'BPM': 'Average_BPM'}, inplace=True)
 
 
     
-    av_points = 84  
-    average_bpm_df['Att_MIS'] = average_bpm_df['Average_BPM'] / av_points + \
-                            (-average_bpm_df['Average_BPM'] / av_points + 
-                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
-    average_bpm_df['Def_MIS'] = (-average_bpm_df['Average_BPM'] / av_points + 
-                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+    # av_points = 84  
+    # average_bpm_df['Att_MIS'] = average_bpm_df['Average_BPM'] / av_points + \
+    #                         (-average_bpm_df['Average_BPM'] / av_points + 
+    #                          np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+    # average_bpm_df['Def_MIS'] = (-average_bpm_df['Average_BPM'] / av_points + 
+    #                          np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
     
 
 
-    # print(average_bpm_df)
+    # # print(average_bpm_df)
 
-    data_dict = average_bpm_df.to_dict("records")
-    add_to_mongo(data_dict,'BPM_squad')
+    # data_dict = average_bpm_df.to_dict("records")
+    # add_to_mongo(data_dict,'BPM_squad')
 
     print("Ok")
 except Exception as e:

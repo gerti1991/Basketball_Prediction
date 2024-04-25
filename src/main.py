@@ -1,7 +1,9 @@
 import subprocess
 import requests
 import os
-
+import time
+import schedule
+from datetime import datetime
 
 # Change the current directory to the parent directory
 # os.chdir("..")
@@ -40,14 +42,25 @@ def run_script(script_name):
     try:
         result = subprocess.run(command, check=True, text=True, capture_output=True, shell=True)
         script = script_name.replace("src\\","").replace(".py","")
-        send_telegram_message(f"{script}: {result.stdout.strip()}")
-        print(f"{script}: {result.stdout.strip()}")
+        current_datetime = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
+        send_telegram_message(f"{script} on {current_datetime}: {result.stdout.strip()}")
+        print(f"{script} on {current_datetime}: {result.stdout.strip()}")
     except subprocess.CalledProcessError as e:
-        send_telegram_message(f"{script_name}: {e.stderr.strip()}")
-        print(f"{script_name}: {e.stderr.strip()}")
+        current_datetime = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
+        send_telegram_message(f"{script_name} on {current_datetime}: {e.stderr.strip()}")
+        print(f"{script_name} on {current_datetime}: {e.stderr.strip()}")
+
 
 # List of Python scripts to run
-scripts = ['Upload_TS_PS_toMongo.py', 'final_BPM.py', 'spread_Players.py','prediction_BPM.py','predict_Market_Bet.py','predict_Team.py','Universal_Predict.py','status.py']
+scripts = ['Upload_TS_PS_toMongo.py', 'final_BPM.py', 'spread_Players.py','prediction_BPM.py','predict_Market_Bet.py','predict_Team.py','Universal_Predict.py','Odds_Creation.py','status.py']
 
-for script in scripts:
-    run_script(f"src\\{script}")
+
+def job():
+    for script in scripts:
+        run_script(f"{script}")
+
+schedule.every().day.at("09:00").do(job)
+
+while True:
+    schedule.run_pending()
+    time.sleep(60)

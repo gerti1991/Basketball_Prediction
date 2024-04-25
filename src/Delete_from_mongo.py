@@ -3,20 +3,20 @@ from connectors import mongo_connect,add_to_mongo
 import pandas as pd
 
 # Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['Basketball']  # Replace 'yourDatabaseName' with your actual database name
-collection = db['events_stats']  # Replace 'yourCollectionName' with your actual collection name
+# client = MongoClient('mongodb://localhost:27017/')
+# db = client['Basketball']  # Replace 'yourDatabaseName' with your actual database name
+# collection = db['events_stats']  # Replace 'yourCollectionName' with your actual collection name
 
 # Update operation to unset fields
-collection.update_many(
-    {},  # Filter for the documents; an empty dictionary {} matches all documents in the collection.
-    {
-        '$unset': {
-            'Id_': ''  # The value is ignored, just need to specify the field name
+# collection.update_many(
+#     {},  # Filter for the documents; an empty dictionary {} matches all documents in the collection.
+#     {
+#         '$unset': {
+#             'home odds to beat handicap_y': ''  # The value is ignored, just need to specify the field name
 
-        }
-    }
-)
+#         }
+#     }
+# )
 
 # BPM_Player= mongo_connect('BPM_Player')
 
@@ -51,12 +51,13 @@ collection.update_many(
 
 
 
-# client = MongoClient('mongodb://localhost:27017/')
-# db = client['Basketball']
-# collection = db['events_stats']
+client = MongoClient('mongodb://localhost:27017/')
+db = client['Basketball']
+collection = db['events_stats']
+df= mongo_connect('events_stats')
 
-# for index, row in df.iterrows():
-#     id = row['Event ID']
-#     if row['Prediction_Away_BPM'] ==0:
-#         collection.delete_one({'Event ID': id})
-# client.close()
+for index, row in df.iterrows():
+    id = row['Event ID']
+    if row['League'] =='Turkish-BSL':
+        collection.delete_one({'Event ID': id})
+client.close()

@@ -14,12 +14,16 @@ import re
 # url_team_stats = "https://92ec-185-175-253-107.ngrok-free.app/api/v1/basketball/team-stats/Italy-Lega-A/2024/test-batch"
 
 # Production API links
-url_player_stats = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/player-stats/All/2024/test-batch"
-url_team_stats = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/team-stats/All/2024/test-batch"
+# url_player_stats = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/player-stats/All/2024/test-batch"
+# url_team_stats = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/team-stats/All/2024/test-batch"
+
+url_player_stats = "http://localhost:5555/api/v1/basketball/player-stats/All/2024/test-batch"
+url_team_stats = "http://localhost:5555/api/v1/basketball/team-stats/All/2024/test-batch"
 
 
 
-url_events = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/All/2024/test-batch"
+# url_events = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/All/2024/test-batch"
+url_events = "http://localhost:5555/api/v2/basketball/events/All/2024/test-batch"
 
 headers = {
     'Auth-Key': 'F2RwH4EJ68Be2vS4WulSxnfQ',

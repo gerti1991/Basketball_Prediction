@@ -23,6 +23,7 @@ try:
     FINAL_temp_2['BPM'],  # Keep 'BPM' value if 'trader rating' is NaN or empty
     FINAL_temp_2['trader rating']  # Use 'trader rating' value otherwise
 )
+    
     FINAL_2 = FINAL_temp_2[['League','Season','Team','Player','Position','% MIN','Estimated Possessions','Possessions/Min','BPM','Missing']]
 
 
@@ -33,7 +34,24 @@ try:
     # Convert DataFrame to dictionary
     data_dict = final_df.to_dict("records")
     add_to_mongo(data_dict,'BPM_Player_Spread')
-    print("Ok")
+    
 
+    df = FINAL
+    df = df[df['Missing']==False]
+    # print(df[df['Team']=='Grissin Bon Reggio Emilia'])
+    average_bpm_df = df.groupby(['League', 'Team'])['BPM'].mean().reset_index()
+    average_bpm_df.rename(columns={'BPM': 'Average_BPM'}, inplace=True)
+    av_points = 84  
+    average_bpm_df['Att_MIS'] = average_bpm_df['Average_BPM'] / av_points + \
+                            (-average_bpm_df['Average_BPM'] / av_points + 
+                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+    average_bpm_df['Def_MIS'] = (-average_bpm_df['Average_BPM'] / av_points + 
+                             np.sqrt((average_bpm_df['Average_BPM'] / av_points) ** 2 + 4)) / 2
+        # print(average_bpm_df)
+
+    data_dict = average_bpm_df.to_dict("records")
+    add_to_mongo(data_dict,'BPM_squad')
+
+    print("Ok")
 except Exception as e:
     print(f"Error: {e}")  # Print the error message if an exception occurs

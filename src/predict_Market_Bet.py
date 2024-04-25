@@ -7,7 +7,10 @@ import concurrent.futures
 from connectors import mongo_connect,add_to_mongo
 import pytz 
 
-url = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/spreads/"
+# url = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/spreads/"
+
+
+url = "http://localhost:5555/api/v2/basketball/events/spreads/"
 
 payload={}
 files={}
@@ -21,9 +24,11 @@ try:
     response = requests.request("GET", url, headers=headers, data=payload, files=files)
     data = response.json()
     df1 = pd.DataFrame(data)
-    df = df1[df1['status']=='Finished']
+    df1['hdp_home'].astype(float)
+    df = df1[(df1['status']=='Finished')&df1['round']>=1]
+
     # df =df1[df1['status']=='Scheduled']   
-    unique_home_leagues = df['league_name'].unique().tolist()
+    unique_home_leagues = list(df['league_name'].unique())
     supremacy_forcast = {'league_name':[],'Team':[],'Ratings':[]}
 
     for league in unique_home_leagues:
@@ -31,10 +36,9 @@ try:
         for team in unique_home_teams:
             supremacy_forcast['league_name'].append(league)
             supremacy_forcast['Team'].append(team)
-            supremacy_forcast['Ratings'].append(0)
-
+            supremacy_forcast['Ratings'].append(0.0)
     df2 = pd.DataFrame(supremacy_forcast)
-
+    df2['Ratings'].astype(float)
 
     # # Assuming your existing DataFrame is named df
 
@@ -55,9 +59,16 @@ try:
     df = df.merge(df2.rename(columns={'Team': 'home', 'Ratings': 'Home_Rating'}), on=['home','league_name'], how='left')
     df = df.merge(df2.rename(columns={'Team': 'away', 'Ratings': 'Away_Rating'}), on=['away','league_name'], how='left')
     home = 2.5
+
     df['Forecast'] = home + df['Home_Rating'] - df['Away_Rating']
     df['Error'] = (-df['hdp_home'])-df['Forecast']
-    df['weight'] = 1/(1+df['Round'])
+    df['Round'] = df['Round'].astype('int')
+    current_round = df['Round'].max()
+
+    df['weight'] = np.where(df['Round']==current_round, 1,1 / (current_round - df['Round']))
+    # df['weight'] = df.apply(lambda row: 1 if row['Round'] == current_round else 1 / (current_round - row['Round']), axis=1)
+
+    # df['weight'] = 1/(1+df['Round'])
     df['Squared error'] = (df['Error']*df['Error'])*df['weight']
 
     mean_errors = df['Squared error'].sum()
@@ -65,13 +76,20 @@ try:
     # Function to calculate mean errors for each league
     def calculate_mean_errors_per_league(df, df2, league):
         # Filter dataframes for the current league
-        df_league = df[df['league_name'] == league]
-        df2_league = df2[df2['league_name'] == league]
+        # max_value = df[df['league_name'] == league]['Round'].max()
+        # lower_bound = max_value - 5
 
+        # df_league = df[(df['league_name'] == league) &(df['Round'] >= lower_bound)]
+
+        df_league = df[df['league_name'] == league].copy()
+        df2_league = df2[df2['league_name'] == league]
+        current_round = df_league['Round'].max()
         # Get teams and initial ratings for the current league
         teams = df2_league['Team'].tolist()
         initial_ratings = df2_league['Ratings'].values
-
+        
+        # initial_ratings = np.zeros(len(teams))
+        
         # Function to calculate mean errors
         def calculate_mean_errors(ratings_array):
             # Update ratings in df_league for each team
@@ -81,12 +99,12 @@ try:
                 df_league.loc[df_league['away'] == team, 'Away_Rating'] = rating
 
             # Calculate Forecast, Error, weight, and Squared error
-            df_league['Forecast'] = home + df_league['Home_Rating'] - df_league['Away_Rating']
-            df_league['Error'] = (-df_league['hdp_home']) - df_league['Forecast']
-            df_league['weight'] = 1 / (1 + df_league['Round'])
-            df_league['Squared error'] = (df_league['Error'] * df_league['Error']) * df_league['weight']
 
-            # Return the sum of Squared errors
+            
+            df_league.loc[:, 'Forecast'] = home + df_league['Home_Rating'] - df_league['Away_Rating']
+            df_league.loc[:, 'Error'] = (-df_league['hdp_home']) - df_league['Forecast']
+            df_league.loc[:, 'weight'] = np.where(df_league['Round'] == current_round, 1, 1 / (current_round - df_league['Round']))
+            df_league.loc[:, 'Squared error'] = (df_league['Error'] * df_league['Error']) * df_league['weight']
             return df_league['Squared error'].sum()
 
         # Perform the optimization
@@ -101,11 +119,14 @@ try:
         for i, team in enumerate(df2_league['Team']):
             df2.loc[(df2['Team'] == team) & (df2['league_name'] == league), 'Ratings'] = optimized_ratings[i]
 
+
+
+
     # List of unique leagues
     leagues = df['league_name'].unique()
 
     # Use ThreadPoolExecutor to manage threads
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         # Submit tasks to the executor
         futures = [executor.submit(process_league, league) for league in leagues]
 
@@ -122,15 +143,17 @@ try:
 
     try:
         events= mongo_connect('events_stats')
+        df2= mongo_connect('market_bet')
         df2 = df2.drop(['Att_MIS', 'Def_MIS'], axis=1)
         events = events.merge(df2, left_on=['League', 'Home'], right_on=['league_name', 'Team'], how='left')
         events.rename(columns={'Ratings': 'Home_Ratings'}, inplace=True)
         # Merge for Away Teams
         events = events.merge(df2, left_on=['League', 'Away'], right_on=['league_name', 'Team'], how='left')
         events.rename(columns={'Ratings': 'Away_Ratings'}, inplace=True)
+        # print(events[events['Event ID']=='dOP97b1A'])
         if 'freeze' in events:
-            events['Prediction_Home_Market'] = np.where(events['freeze'] == False,(events['Home_Ratings'] + 2.5 - events['Away_Ratings'])*-1,events['Prediction_Home_Market'])
-            events['Prediction_Away_Market'] = np.where(events['freeze'] == False,(events['Prediction_Home_Market'])*-1,events['Prediction_Away_Market'])
+            events['Prediction_Home_Market'] = np.where(events['freeze'] == False ,(events['Home_Ratings'] + 2.5 - events['Away_Ratings'])*-1,events['Prediction_Home_Market'])
+            events['Prediction_Away_Market'] = np.where(events['freeze'] == False ,(events['Prediction_Home_Market'])*-1,events['Prediction_Away_Market'])
         else:
             events['Prediction_Home_Market'] = (events['Home_Ratings'] + 2.5 - events['Away_Ratings'])*-1
             events['Prediction_Away_Market'] = (events['Prediction_Home_Market'])*-1
