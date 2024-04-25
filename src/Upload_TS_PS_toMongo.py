@@ -4,7 +4,7 @@ import numpy as np
 from pymongo import MongoClient
 from helpers import clean_and_convert,merge_rows_,calculate_team_average,calculate_sum_product,merge_rows
 from connectors import mongo_connect,add_to_mongo
-
+import re
 
 # Getting info from API
 # URL and headers
@@ -19,7 +19,7 @@ url_team_stats = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketba
 
 
 
-url_events = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/events/All/2024/test-batch"
+url_events = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/All/2024/test-batch"
 
 headers = {
     'Auth-Key': 'F2RwH4EJ68Be2vS4WulSxnfQ',
@@ -70,7 +70,7 @@ try:
 
     clean_and_convert(TS, ['League', 'Season', 'Team'])
     clean_and_convert(PS, ['League', 'Season', 'Team', 'Player', 'Position'])
-    clean_and_convert(events, ['Date', 'Home', 'Away', 'League', 'Season','Link','Status'])
+    clean_and_convert(events, ['Event ID','Date', 'Home', 'Away', 'League', 'Season','Link','Status'])
 
     # PS.drop('Efficiency Differential', axis=1, inplace=True)
     player_stats= PS
@@ -112,4 +112,51 @@ try:
 except Exception as e:
     print(f"Error: {e}")  # Print the error message if an exception occurs
 
+# url_events = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/All/2024/test-batch"
 
+# headers = {
+#     'Auth-Key': 'F2RwH4EJ68Be2vS4WulSxnfQ',
+#     'Accept': 'application/json',
+#     'Content-Type': 'application/json'
+# }
+
+# #get events
+# response_events = requests.get(url_events, headers=headers)
+# events = response_events.json()  # Extract JSON content
+# events = pd.DataFrame(events)
+
+# trim_func = lambda x: x.strip() if isinstance(x, str) else x
+# events = events.map(trim_func)
+# events.columns = [[col.strip() for col in events.columns]]
+# events.columns = [col[0] if isinstance(col, tuple) else col for col in events.columns]
+# events = events.drop_duplicates()
+# clean_and_convert(events, ['Date','Event ID', 'Home', 'Away', 'League', 'Season','Link','Status'])
+
+# eventsv1= mongo_connect('events_stats')
+# eventsv1.dropna(subset=['Prediction_Home_BPM', 'Prediction_Home_Team'],inplace=True)
+# events['Id_'] = events['League']+events['Home']+events['Away']+events['Status']
+# eventsv1['Id_'] = eventsv1['League']+eventsv1['Home']+eventsv1['Away']+eventsv1['Status']
+
+# columns_to_keep = set(eventsv1.columns)
+
+# result = events.merge(eventsv1, how='inner', on='Id_') 
+
+# for column in set(result.columns):
+#     column = column.replace('_x','')
+
+#     if column not in columns_to_keep:
+#         result = result.drop(column, axis=1)
+
+
+# def remove_x(col_name):
+#     return re.sub('_x$', '', col_name)  # Remove '_x' at the end
+
+# result = result.rename(columns=remove_x)  
+# result['Home Score'].fillna(0, inplace=True)
+# result['Away Score'].fillna(0, inplace=True)
+
+# eventsv1= mongo_connect('events_stats')
+
+# events_stats = result
+# data_dict_events_stats = events_stats.to_dict("records")
+# add_to_mongo(data_dict_events_stats,'events_statsV2')

@@ -275,9 +275,9 @@ try:
     FINAL_temp['Minutes'] = FINAL_temp['MP']
     FINAL_temp['MPG'] = FINAL_temp['MP']/FINAL_temp['G']
     FINAL_temp = merge_rows(BPM,FINAL_temp,Row_to_add=['BPM'])
-    # FINAL_temp['trader rating'] = None
-    # FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
-    # FINAL_temp['Missing'] = False
+    FINAL_temp['trader rating'] = None
+    FINAL_temp['trader rating'] = FINAL_temp['trader rating'].astype(float)
+    FINAL_temp['Missing'] = False
     FINAL_temp = merge_rows(OBPM,FINAL_temp,Row_to_add=['OBPM'])
     FINAL_temp['DBPM'] = FINAL_temp['BPM'] - FINAL_temp['OBPM']
     FINAL_temp['Contrib'] = FINAL_temp['BPM']*FINAL_temp['% Min']
@@ -289,7 +289,7 @@ try:
     FINAL_temp['ReOBPM'] = (FINAL_temp['Minutes']*FINAL_temp['OBPM']+FINAL_temp['ExpBPM']*FINAL_temp['ReMin'])/(FINAL_temp['Minutes']+FINAL_temp['ReMin'])
     FINAL_temp['ReDBPM'] = FINAL_temp['ReBPM']-FINAL_temp['ReOBPM']
     
-    FINAL = FINAL_temp[['League','Season','Player','Team','Position','Off Role','Minutes','MPG','BPM','OBPM','DBPM','Contrib','VORP','ReMPG','ReMin','ExpBPM','ReBPM','ReOBPM','ReDBPM','Pace','Team Rating','Off Rating']]
+    FINAL = FINAL_temp[['League','Season','Player','Team','Position','Off Role','Minutes','MPG','BPM','OBPM','DBPM','Contrib','VORP','ReMPG','ReMin','ExpBPM','ReBPM','ReOBPM','ReDBPM','Pace','Team Rating','Off Rating','trader rating','Missing']]
     rename_dict = {
         'Pace': 'Pace',
         'Team Rating': 'Rating',

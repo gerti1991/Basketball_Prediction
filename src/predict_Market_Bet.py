@@ -5,8 +5,9 @@ from scipy.optimize import minimize
 import numpy as np
 import concurrent.futures
 from connectors import mongo_connect,add_to_mongo
+import pytz 
 
-url = "https://possibly-brave-sailfish.ngrok-free.app/api/v1/basketball/events/spreads/"
+url = "https://possibly-brave-sailfish.ngrok-free.app/api/v2/basketball/events/spreads/"
 
 payload={}
 files={}
@@ -19,7 +20,6 @@ headers = {
 try:
     response = requests.request("GET", url, headers=headers, data=payload, files=files)
     data = response.json()
-
     df1 = pd.DataFrame(data)
     df = df1[df1['status']=='Finished']
     # df =df1[df1['status']=='Scheduled']   
@@ -27,7 +27,7 @@ try:
     supremacy_forcast = {'league_name':[],'Team':[],'Ratings':[]}
 
     for league in unique_home_leagues:
-        unique_home_teams = df[df['league_name']==league] ['home'].unique().tolist()
+        unique_home_teams = df[df['league_name']==league]['home'].unique().tolist()
         for team in unique_home_teams:
             supremacy_forcast['league_name'].append(league)
             supremacy_forcast['Team'].append(team)
@@ -36,22 +36,22 @@ try:
     df2 = pd.DataFrame(supremacy_forcast)
 
 
-    # Assuming your existing DataFrame is named df
+    # # Assuming your existing DataFrame is named df
 
-    # Function to calculate rounds for each group
-    def calculate_rounds(group):
-        unique_teams_count = len(group['home'].unique())
-        if unique_teams_count % 2 == 0:  # Even number of teams
-            number_of_matches_per_round = unique_teams_count // 2
-        else:  # Odd number of teams
-            number_of_matches_per_round = (unique_teams_count - 1) // 2
+    # # Function to calculate rounds for each group
+    # def calculate_rounds(group):
+    #     unique_teams_count = len(group['home'].unique())
+    #     if unique_teams_count % 2 == 0:  # Even number of teams
+    #         number_of_matches_per_round = unique_teams_count // 2
+    #     else:  # Odd number of teams
+    #         number_of_matches_per_round = (unique_teams_count - 1) // 2
 
-        group['Round'] = group.index // number_of_matches_per_round
-        return group
+    #     group['Round'] = group.index // number_of_matches_per_round
+    #     return group
 
-    # Apply the function to each league group
-    df = df.groupby('league_name').apply(calculate_rounds).reset_index(drop=True)
-
+    # # Apply the function to each league group
+    # df = df.groupby('league_name').apply(calculate_rounds).reset_index(drop=True)
+    df.rename(columns={'round':'Round'},inplace=True)
     df = df.merge(df2.rename(columns={'Team': 'home', 'Ratings': 'Home_Rating'}), on=['home','league_name'], how='left')
     df = df.merge(df2.rename(columns={'Team': 'away', 'Ratings': 'Away_Rating'}), on=['away','league_name'], how='left')
     home = 2.5
@@ -139,8 +139,10 @@ try:
         events['Result_Spread_Market2'] = (events['Home Score'] - events['Away Score'])- (-1*events['Prediction_Home_Market'])
         events['Prediction_eff_Market'] = np.where((events['Prediction_Result_Market'] - events['Result'] == 0) & (events['Result_Spread_Market'] >= 0), 1, 0)
         events.drop(['Home_Ratings','Away_Ratings','Att_MIS_x','Att_MIS_y','Def_MIS_x','Def_MIS_y','Team_x','Team_y','league_name_x','league_name_y'], axis=1, inplace=True, errors='ignore')
+        events.drop('Updated',axis=1, inplace=True, errors='ignore')
         events_stats = events
         data_dict_events_stats = events_stats.to_dict("records")
+
         add_to_mongo(data_dict_events_stats,'events_stats')
 
         Market_spreads = df1.to_dict("records")

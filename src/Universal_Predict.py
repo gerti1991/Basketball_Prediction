@@ -125,6 +125,7 @@ try:
     updated_table1['Prediction_eff_Universal'] = np.where((updated_table1['Prediction_Result_Universal'] - updated_table1['Result'] == 0) & (updated_table1['Result_Spread_Universal'] >= 0), 1, 0)
     # print(updated_table1.info())
     # print(updated_table1[updated_table1['Event ID']==446542][['Event ID','Points_Away_Universal','Points_Home_Universal','Total_Points_Universal','Prediction_Home_Universal','Prediction_Away_Universal']])
+    updated_table1.drop('Updated',axis=1, inplace=True, errors='ignore')
     events_stats = updated_table1
     data_dict_events_stats = events_stats.to_dict("records")
     add_to_mongo(data_dict_events_stats,'events_stats')

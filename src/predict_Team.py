@@ -91,7 +91,7 @@ try:
     updated_table1['Result_Spread_Team'] = np.where(updated_table1['Result']==0,(updated_table1['Away Score'] - updated_table1['Home Score'])+updated_table1['Prediction_Away_Team'],(updated_table1['Home Score'] - updated_table1['Away Score'])+updated_table1['Prediction_Home_Team'])
     updated_table1['Result_Spread_Team2'] = (updated_table1['Home Score'] - updated_table1['Away Score']) - (-1*updated_table1['Prediction_Home_Team'])
     updated_table1['Prediction_eff_Team'] = np.where((updated_table1['Prediction_Result_Team'] - updated_table1['Result'] == 0) & (updated_table1['Result_Spread_Team'] >= 0), 1, 0)
-
+    updated_table1.drop('Updated',axis=1, inplace=True, errors='ignore')
     events_stats = updated_table1
     data_dict_events_stats = events_stats.to_dict("records")
     add_to_mongo(data_dict_events_stats,'events_stats')

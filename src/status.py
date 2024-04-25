@@ -6,7 +6,7 @@ from datetime import datetime
 
 try:
     events= mongo_connect('events_stats')
-
+    
     status = {
         "Event ID":[],
         'Updated':[],

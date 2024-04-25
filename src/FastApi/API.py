@@ -26,13 +26,19 @@ app.add_middleware(
 # Connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client.Basketball  # Database name
+dbhs = client.Historical_Data
+
 events_stats_collection = db.events_stats
+events_statsv2_collection = db.events_statsV2
+
 market_bet_collection = db.market_bet
 market_spreads_collection = db.market_spreads
 team_stats_collection = db.team_stats
 BPM_squad_collection = db.BPM_squad
 events_stats_collection2 = db.BPM_Player
 BPM_Player_Spread_collection = db.BPM_Player_Spread
+market_bet_his_collection = dbhs.market_bet_his
+BPM_squad_his_collection = dbhs.BPM_squad_his
 
 
 async def update_trader_data(request_data: list):  # Expect a list of dicts
@@ -146,3 +152,30 @@ def get_bpm_squad():
     squad = list(BPM_Player_Spread_collection.find({}, {"_id": 0}))
     squad = jsonable_encoder(squad, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
     return squad
+
+
+@app.get("/market_bet_his")
+def get_events_stats():
+    events = list(market_bet_his_collection.find({}, {"_id": 0}))
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+
+
+@app.get("/market_bet_his")
+def get_events_stats():
+    events = list(market_bet_his_collection.find({}, {"_id": 0}))
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+
+@app.get("/BPM_squad_his")
+def get_events_stats():
+    events = list(BPM_squad_his_collection.find({}, {"_id": 0}))
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events
+
+
+@app.get("/events-statsV2")
+def get_events_stats():
+    events = list(events_statsv2_collection.find({}, {"_id": 0}))
+    events = jsonable_encoder(events, custom_encoder={float: lambda x: 0 if np.isnan(x) else x})
+    return events

@@ -29,7 +29,7 @@ def add_to_mongo(dic,db_name='team_stats'):
     
 
     for record in dic:
-        if db_name not in ['team_stats' ,'events_stats','market_bet','market_spreads','BPM_squad']:
+        if db_name not in ['team_stats' ,'events_stats','market_bet','market_spreads','BPM_squad','events_statsV2']:
             collection_player_stats = db[f'{db_name}']
             collection = collection_player_stats
             query_keys = ['League', 'Season', 'Team', 'Player']
@@ -39,6 +39,10 @@ def add_to_mongo(dic,db_name='team_stats'):
             query_keys = ['League', 'Season', 'Team']
         elif db_name == 'events_stats':
             collection_events_stats = db['events_stats']
+            collection = collection_events_stats
+            query_keys = ['League', 'Season','Event ID']
+        elif db_name == 'events_statsV2':
+            collection_events_stats = db['events_statsV2']
             collection = collection_events_stats
             query_keys = ['League', 'Season','Event ID']
         elif db_name == 'market_bet':

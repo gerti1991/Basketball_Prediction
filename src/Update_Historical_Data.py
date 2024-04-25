@@ -28,10 +28,12 @@ def mongo_db(collection_name):
 def add_to_historical(source_collection_name, historical_collection_name):
     # Connect to the source collection
     source_collection = mongo_connect(source_collection_name)
-    
-    
-    # Convert documents to DataFrame for easier manipulation
-    df = pd.DataFrame(source_collection)
+    if source_collection_name == 'team_stats':
+        df = pd.DataFrame(source_collection)
+        df = df[['League','Season','Team','Attacking Strength','Defensive Strength','Pace_league','Sup Rating']]
+    else:
+        # Convert documents to DataFrame for easier manipulation
+        df = pd.DataFrame(source_collection)
     
     # Determine the current week number and format the date
     current_date = datetime.now()
@@ -52,6 +54,7 @@ try:
     add_to_historical("market_bet", "market_bet_his")
     add_to_historical("BPM_Player", "BPM_Player_his")
     add_to_historical("BPM_squad", "BPM_squad_his")
+    add_to_historical("team_stats", "Teams_his")
     send_telegram_message(f"Update_Historical_Data: Ok")
 
 
