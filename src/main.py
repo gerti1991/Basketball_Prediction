@@ -65,4 +65,8 @@ while True:
     schedule.run_pending()
     time.sleep(60)
 
+
+# for script in scripts:
+#     run_script(f"{script}")
+
 # job()
