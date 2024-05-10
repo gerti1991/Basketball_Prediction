@@ -56,8 +56,19 @@ db = client['Basketball']
 collection = db['events_stats']
 df= mongo_connect('events_stats')
 
-for index, row in df.iterrows():
-    id = row['Event ID']
-    if row['League'] =='Turkish-BSL':
-        collection.delete_one({'Event ID': id})
-client.close()
+# for index, row in df.iterrows():
+#     id = row['Event ID']
+#     if row['League'] =='Turkish-BSL':
+#         collection.delete_one({'Event ID': id})
+# client.close()
+df['Date'] = pd.to_datetime(df['Date'])
+df.loc[df['Date'].dt.month > 5, 'Date'] -= pd.DateOffset(years=1)
+mask = (df['Date'].dt.month < 5) & (df['Date'].dt.year != 2024)
+df.loc[mask, 'Date'] += pd.DateOffset(years=1)
+df['Date']= df['Date'].dt.strftime('%Y-%m-%d')
+
+
+
+events_stats = df
+data_dict_events_stats = events_stats.to_dict("records")
+add_to_mongo(data_dict_events_stats,'events_stats')

@@ -308,3 +308,45 @@ def run_my_script(request: Request):
         output_list.append({script: output})  # Append output to list
 
     return JSONResponse({'output': output_list}, status_code=200)
+
+
+db3 = client.Events  # Database name
+
+eventsdatas = db3.eventsdatas
+
+@app.get("/eventsdatas")
+def get_eventsdatas():
+    players = list(eventsdatas.find({}))
+    players_encoded = []
+    for player in players:
+        player_id = str(player.pop('_id'))  # Remove and store the _id field
+        player_encoded = {key: (0 if isinstance(value, float) and pd.isna(value) else value) for key, value in player.items()}
+        player_encoded['_id'] = player_id  # Add the _id field back to the player
+        players_encoded.append(player_encoded)
+    return players_encoded
+
+
+
+@app.post('/run_script2')
+def run_my_script(request: Request):
+    # Change directory to the desired path
+    os.chdir(r"C:\\Users\\tiran\\projects\\events")
+
+    def run_script(script_name):
+        """Runs a script and reports its success or failure."""
+        command = f"cmd.exe /c node .\\lib\\cron\\{script_name}"
+        try:
+            result = subprocess.run(command, check=True, text=True, capture_output=True, shell=True)
+            print(f"{script_name}: {result.stdout.strip()}")
+            return result.stdout.strip()  # Return stdout
+        except subprocess.CalledProcessError as e:
+            print(f"{script_name}: {e.stderr.strip()}")
+            return e.stderr.strip()  # Return stderr
+
+    scripts = ['EventData2.js']  # Add more scripts if needed
+    output_list = []  # List to store outputs of each script
+    for script in scripts:
+        output = run_script(script)
+        output_list.append({script: output})  # Append output to list
+
+    return JSONResponse({'output': output_list}, status_code=200)
