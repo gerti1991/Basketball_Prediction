@@ -1,0 +1,1520 @@
+[{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731bd"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "Maroussi BC",
+  "Att_MIS": 0.9684397686192286,
+  "Def_MIS": 1.032588739541096,
+  "Ratings": -5.131917673749389
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731bf"
+  },
+  "Team": "AS Apollon Patras",
+  "league_name": "Greek-HEBA-A1",
+  "Att_MIS": 0.9216833456689343,
+  "Def_MIS": 1.084971324152793,
+  "Ratings": -13.063038278708692
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731c1"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "Panathinaikos",
+  "Att_MIS": 1.1041333551626695,
+  "Def_MIS": 0.9056877009685773,
+  "Ratings": 15.87565233552737
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731c3"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "Aris BC",
+  "Att_MIS": 0.9960074938330609,
+  "Def_MIS": 1.0040085101685072,
+  "Ratings": -0.6400813068357122
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731c5"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "PAOK BC",
+  "Att_MIS": 0.9894090116722281,
+  "Def_MIS": 1.0107043580590314,
+  "Ratings": -1.7036277109442615
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731c7"
+  },
+  "Team": "AEK Athens",
+  "league_name": "Greek-HEBA-A1",
+  "Att_MIS": 1.015764381914844,
+  "Def_MIS": 0.984480276926893,
+  "Ratings": 2.5027283990360814
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731c9"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "Kolossos Rodou BC",
+  "Att_MIS": 0.9664314255441138,
+  "Def_MIS": 1.0347345642625252,
+  "Ratings": -5.46425109747291
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731cb"
+  },
+  "Team": "Peristeri BC",
+  "league_name": "Greek-HEBA-A1",
+  "Att_MIS": 1.0222866708819516,
+  "Def_MIS": 0.9781991964516917,
+  "Ratings": 3.526997954420788
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731cd"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "ASP Promitheas Patras",
+  "Att_MIS": 1.018353728081734,
+  "Def_MIS": 0.9819770600572092,
+  "Ratings": 2.9101334419619986
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731cf"
+  },
+  "Team": "GS Lavrio",
+  "league_name": "Greek-HEBA-A1",
+  "Att_MIS": 0.9575798545276496,
+  "Def_MIS": 1.044299329472919,
+  "Ratings": -6.937557995621553
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731d1"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "Olympiacos",
+  "Att_MIS": 1.09374933140017,
+  "Def_MIS": 0.9142862731809343,
+  "Ratings": 14.357044657538857
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731d3"
+  },
+  "league_name": "Greek-HEBA-A1",
+  "Team": "AS Karditsas",
+  "Att_MIS": 0.9618078767129025,
+  "Def_MIS": 1.039708682172186,
+  "Ratings": -6.232064436742676
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731d5"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Napoli Basket",
+  "Att_MIS": 1.0031575318783763,
+  "Def_MIS": 0.996852406747658,
+  "Ratings": 0.5044100104574615
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731d7"
+  },
+  "Team": "Universo De'Longhi Treviso",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 0.9729377624912547,
+  "Def_MIS": 1.0278149729119885,
+  "Ratings": -4.390176833658703
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731d9"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Enel Brindisi",
+  "Att_MIS": 0.9902604620286273,
+  "Def_MIS": 1.0098353295368578,
+  "Ratings": -1.565989400658441
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731db"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "OpenJobMetis Varese",
+  "Att_MIS": 0.9806984866315335,
+  "Def_MIS": 1.0196813940590062,
+  "Ratings": -3.118632594197815
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731dd"
+  },
+  "Team": "Givova Scafati",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 0.9867890576528429,
+  "Def_MIS": 1.013387807905552,
+  "Ratings": -2.1279000202167326
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731df"
+  },
+  "Team": "AX Armani Exchange Milan",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 1.0540675680983895,
+  "Def_MIS": 0.9487057853454962,
+  "Ratings": 8.42894262023146
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731e1"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Banco di Sardegna Sassari",
+  "Att_MIS": 0.9902658269986399,
+  "Def_MIS": 1.0098298585450163,
+  "Ratings": -1.5651225237101118
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731e3"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Gemani Basket Brescia",
+  "Att_MIS": 1.028577164804249,
+  "Def_MIS": 0.972216800273135,
+  "Ratings": 4.508829162489127
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731e5"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Umana Venezia",
+  "Att_MIS": 1.0172291506864013,
+  "Def_MIS": 0.9830626652069735,
+  "Ratings": 2.733318838354228
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731e7"
+  },
+  "Team": "Dolomiti Energia Trento",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 0.9943593439997463,
+  "Def_MIS": 1.0056726534871836,
+  "Ratings": -0.9050647589949778
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731e9"
+  },
+  "Team": "Georgio Tesi Group Pistoia",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 0.9761274187895393,
+  "Def_MIS": 1.0244564190606023,
+  "Ratings": -3.8663200216850298
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731eb"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Grissin Bon Reggio Emilia",
+  "Att_MIS": 1.0079286177354825,
+  "Def_MIS": 0.99213375074785,
+  "Ratings": 1.263589359010602
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731ed"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Carpegna Prosciutto Basket Pesaro",
+  "Att_MIS": 0.9695679745190167,
+  "Def_MIS": 1.0313872015998466,
+  "Ratings": -4.945538166466401
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731ef"
+  },
+  "Team": "Virtus Bologna",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 1.0520901095868187,
+  "Def_MIS": 0.9504889276002452,
+  "Ratings": 8.128094558925884
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731f1"
+  },
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Team": "Vanoli Cremona",
+  "Att_MIS": 0.9726505301609766,
+  "Def_MIS": 1.0281184957915948,
+  "Ratings": -4.4374372504494515
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731f3"
+  },
+  "Team": "Bertram Tortona",
+  "league_name": "Italian-Lega-Basket-Serie-A",
+  "Att_MIS": 1.0085045445543734,
+  "Def_MIS": 0.9915671728002659,
+  "Ratings": 1.3549897403286133
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731f5"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "UCAM Murcia CB",
+  "Att_MIS": 1.0124675716178981,
+  "Def_MIS": 0.9876859546247243,
+  "Ratings": 1.98252935945391
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731f7"
+  },
+  "Team": "Joventut Badalona",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 1.0070917593692228,
+  "Def_MIS": 0.9929581795270923,
+  "Ratings": 1.1306863873704474
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731f9"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "CD Maristas Palencia",
+  "Att_MIS": 0.9461202507575892,
+  "Def_MIS": 1.056948098509959,
+  "Ratings": -8.86622782018959
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731fb"
+  },
+  "Team": "Gran Canaria",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 1.0255174523552526,
+  "Def_MIS": 0.975117486009967,
+  "Ratings": 4.031997307622854
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731fd"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "Rio Breogan",
+  "Att_MIS": 0.9660274161537917,
+  "Def_MIS": 1.0351673081717176,
+  "Ratings": -5.531191361434072
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c5731ff"
+  },
+  "Team": "Casademont Zaragoza",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 0.9741493271605534,
+  "Def_MIS": 1.0265366634443982,
+  "Ratings": -4.190986902707584
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573201"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "BAXI Manresa",
+  "Att_MIS": 1.0023075484172823,
+  "Def_MIS": 0.997697764103517,
+  "Ratings": 0.36878274510122666
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573203"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "Real Madrid",
+  "Att_MIS": 1.0721023124330968,
+  "Def_MIS": 0.9327467988857675,
+  "Ratings": 11.148441083786356
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573205"
+  },
+  "Team": "CB Girona",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 0.9773108657567201,
+  "Def_MIS": 1.023215882518314,
+  "Ratings": -3.6724013409275122
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573207"
+  },
+  "Team": "Unicaja",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 1.040412706300369,
+  "Def_MIS": 0.9611570427238691,
+  "Ratings": 6.340453086119987
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573209"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "Bilbao Basket",
+  "Att_MIS": 0.9636599440060678,
+  "Def_MIS": 1.0377104560794148,
+  "Ratings": -5.924040965867762
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57320b"
+  },
+  "Team": "MoraBanc Andorra",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 0.9867181969818425,
+  "Def_MIS": 1.0134605838412465,
+  "Ratings": -2.139390948752316
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57320d"
+  },
+  "Team": "Monbus Obradoiro",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 0.9768703849579228,
+  "Def_MIS": 1.0236772609736486,
+  "Ratings": -3.744550081258067
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57320f"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "CB Granada",
+  "Att_MIS": 0.9773707785964993,
+  "Def_MIS": 1.0231531593731458,
+  "Ratings": -3.66259046213171
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573211"
+  },
+  "Team": "Valencia Basket",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 1.0143188375421812,
+  "Def_MIS": 0.9858832972313939,
+  "Ratings": 2.2748432248629946
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573213"
+  },
+  "Team": "Barca",
+  "league_name": "Spanish-ACB",
+  "Att_MIS": 1.0428090436005828,
+  "Def_MIS": 0.9589483387555089,
+  "Ratings": 6.7088563876059135
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573215"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "Lenovo Tenerife",
+  "Att_MIS": 0.9994872628198325,
+  "Def_MIS": 1.0005130002144513,
+  "Ratings": -0.08205899156950731
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573217"
+  },
+  "league_name": "Spanish-ACB",
+  "Team": "Baskonia",
+  "Att_MIS": 1.0242037235793116,
+  "Def_MIS": 0.9763682527000332,
+  "Ratings": 3.826837670342258
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573219"
+  },
+  "league_name": "German-BBL",
+  "Team": "BV Chemnitz 99",
+  "Att_MIS": 1.042356330644218,
+  "Def_MIS": 0.9593648262125097,
+  "Ratings": 6.63932035453667
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57321b"
+  },
+  "Team": "Brose Baskets Bamberg",
+  "league_name": "German-BBL",
+  "Att_MIS": 0.9926747592298858,
+  "Def_MIS": 1.0073792958892167,
+  "Ratings": -1.176362932746471
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57321d"
+  },
+  "Team": "HARKO Merlins Crailsheim",
+  "league_name": "German-BBL",
+  "Att_MIS": 0.9523403937587684,
+  "Def_MIS": 1.0500447177853343,
+  "Ratings": -7.8163459221252625
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57321f"
+  },
+  "league_name": "German-BBL",
+  "Team": "ALBA Berlin",
+  "Att_MIS": 1.0474784883894852,
+  "Def_MIS": 0.9546735432605549,
+  "Ratings": 7.42439561031442
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573221"
+  },
+  "league_name": "German-BBL",
+  "Team": "Mitteldeutscher BC",
+  "Att_MIS": 0.958633745917081,
+  "Def_MIS": 1.0431512600710147,
+  "Ratings": -6.761401132314696
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573223"
+  },
+  "league_name": "German-BBL",
+  "Team": "MHP Riesen",
+  "Att_MIS": 1.0209456799193073,
+  "Def_MIS": 0.9794840407954296,
+  "Ratings": 3.3169311299102127
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573225"
+  },
+  "league_name": "German-BBL",
+  "Team": "Walter Tigers Tubingen",
+  "Att_MIS": 0.9355472228326056,
+  "Def_MIS": 1.0688931307735028,
+  "Ratings": -10.66767263527177
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573227"
+  },
+  "Team": "Hamburg Towers",
+  "league_name": "German-BBL",
+  "Att_MIS": 0.9946631133000762,
+  "Def_MIS": 1.0053655218822954,
+  "Ratings": -0.856192686577539
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573229"
+  },
+  "Team": "s.Oliver Baskets",
+  "league_name": "German-BBL",
+  "Att_MIS": 1.02319683735112,
+  "Def_MIS": 0.977329056830187,
+  "Ratings": 3.6694224416746364
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57322b"
+  },
+  "Team": "EWE Baskets Oldenburg",
+  "league_name": "German-BBL",
+  "Att_MIS": 1.0073185939119695,
+  "Def_MIS": 0.9927345787557167,
+  "Ratings": 1.1667212125002222
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57322d"
+  },
+  "league_name": "German-BBL",
+  "Team": "Telekom Baskets Bonn",
+  "Att_MIS": 1.019908633332436,
+  "Def_MIS": 0.9804799835183402,
+  "Ratings": 3.1542919851276756
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57322f"
+  },
+  "Team": "Bayern Munich",
+  "league_name": "German-BBL",
+  "Att_MIS": 1.0835522898564265,
+  "Def_MIS": 0.9228903942720685,
+  "Ratings": 12.852951646748632
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573231"
+  },
+  "league_name": "German-BBL",
+  "Team": "Basketball Lowen Braunschweig",
+  "Att_MIS": 0.9751675438400955,
+  "Def_MIS": 1.025464809936267,
+  "Ratings": -4.023781287693723
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573233"
+  },
+  "league_name": "German-BBL",
+  "Team": "MLP Academics Heidelberg",
+  "Att_MIS": 0.9671578077416197,
+  "Def_MIS": 1.0339574286589994,
+  "Ratings": -5.343969673390376
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573235"
+  },
+  "league_name": "German-BBL",
+  "Team": "SC Rasta Vechta",
+  "Att_MIS": 1.0061195791494197,
+  "Def_MIS": 0.993917642319819,
+  "Ratings": 0.9761549463680586
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573237"
+  },
+  "league_name": "German-BBL",
+  "Team": "BG Goettingen",
+  "Att_MIS": 0.9778765053607634,
+  "Def_MIS": 1.0226240169571053,
+  "Ratings": -3.579800927707342
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573239"
+  },
+  "Team": "Ratiopharm Ulm",
+  "league_name": "German-BBL",
+  "Att_MIS": 1.034779665223307,
+  "Def_MIS": 0.966389303547242,
+  "Ratings": 5.471228934085201
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57323b"
+  },
+  "Team": "Rostock Seawolves",
+  "league_name": "German-BBL",
+  "Att_MIS": 0.9725992122849607,
+  "Def_MIS": 1.0281727430671737,
+  "Ratings": -4.445882462577036
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57323d"
+  },
+  "Team": "Nancy Basket",
+  "league_name": "French-Jeep-Elite",
+  "Att_MIS": 0.994276232814434,
+  "Def_MIS": 1.0057567172951163,
+  "Ratings": -0.9184387584545801
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57323f"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Paris Basketball",
+  "Att_MIS": 1.0752773216629568,
+  "Def_MIS": 0.9299926445518839,
+  "Ratings": 11.622774168885835
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573241"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Cholet Basket",
+  "Att_MIS": 1.0252646898967483,
+  "Def_MIS": 0.9753578854848761,
+  "Ratings": 3.9925443529497855
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573243"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "ASVEL Basket",
+  "Att_MIS": 1.0428359551475956,
+  "Def_MIS": 0.958923592022167,
+  "Ratings": 6.712989050034294
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573245"
+  },
+  "Team": "CSP Limoges",
+  "league_name": "French-Jeep-Elite",
+  "Att_MIS": 0.9813249612905054,
+  "Def_MIS": 1.0190304327782875,
+  "Ratings": -3.0164377190225697
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573247"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "JDA Dijon Basket",
+  "Att_MIS": 1.0166265221274178,
+  "Def_MIS": 0.9836453980242176,
+  "Ratings": 2.6384899282560217
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573249"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "JL Bourg-en-Bresse",
+  "Att_MIS": 1.0352745611465959,
+  "Def_MIS": 0.9659273370848325,
+  "Ratings": 5.547777924941076
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57324b"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Le Mans Sarthe Basket",
+  "Att_MIS": 0.9948362528649193,
+  "Def_MIS": 1.005190549821853,
+  "Ratings": -0.8283437565546933
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57324d"
+  },
+  "Team": "Saint-Quentin Basketball",
+  "league_name": "French-Jeep-Elite",
+  "Att_MIS": 0.9896597664470087,
+  "Def_MIS": 1.0104482711165614,
+  "Ratings": -1.6630803735642206
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57324f"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Le Portel",
+  "Att_MIS": 0.985010352888593,
+  "Def_MIS": 1.0152177559022089,
+  "Ratings": -2.416592241089273
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573251"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Boulogne-Levallois",
+  "Att_MIS": 0.9353125709414833,
+  "Def_MIS": 1.0691612954516396,
+  "Ratings": -10.707897960812497
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573253"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Chalon-Sur-Saone",
+  "Att_MIS": 0.9691461966230118,
+  "Def_MIS": 1.0318360671325935,
+  "Ratings": -5.015189640766532
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573255"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Nanterre 92",
+  "Att_MIS": 0.9933971605803226,
+  "Def_MIS": 1.0066467266886692,
+  "Ratings": -1.059965288667725
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573257"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Chorale Roanne Basket",
+  "Att_MIS": 0.9740824685606516,
+  "Def_MIS": 1.0266071223698805,
+  "Ratings": -4.201972304738309
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c573259"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "AS Monaco Basket",
+  "Att_MIS": 1.021263503999091,
+  "Def_MIS": 0.9791792187659435,
+  "Ratings": 3.3667428186518014
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57325b"
+  },
+  "Team": "BCM Gravelines",
+  "league_name": "French-Jeep-Elite",
+  "Att_MIS": 0.9895133408123945,
+  "Def_MIS": 1.0105977946482216,
+  "Ratings": -1.6867563068661704
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57325d"
+  },
+  "league_name": "French-Jeep-Elite",
+  "Team": "Strasbourg IG",
+  "Att_MIS": 1.0111532653318895,
+  "Def_MIS": 0.9889697578850928,
+  "Ratings": 1.774680595743744
+},
+{
+  "_id": {
+    "$oid": "65d77bcf292b8dad6c57325f"
+  },
+  "Team": "ADA Blois Basket",
+  "league_name": "French-Jeep-Elite",
+  "Att_MIS": 0.9744517827957222,
+  "Def_MIS": 1.0262180414211766,
+  "Ratings": -4.1413006900363465
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3f5"
+  },
+  "Team": "Petkim Spor",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9815937735674936,
+  "Def_MIS": 1.0187513683645437,
+  "Ratings": -2.9726075837640153
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3f7"
+  },
+  "Team": "Demir Insaat Buyukcekmece",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9995858975203397,
+  "Def_MIS": 1.000414274031564,
+  "Ratings": -0.06627012089794587
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3f9"
+  },
+  "Team": "Manisa Buyuksehir Belediye",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9964777502112753,
+  "Def_MIS": 1.0035346998846468,
+  "Ratings": -0.564555973869723
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3fb"
+  },
+  "Team": "Darussafaka Basketbol Istanbul",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9817891284086157,
+  "Def_MIS": 1.0185486588356325,
+  "Ratings": -2.940762434161346
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3fd"
+  },
+  "Team": "Bursaspor",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9958615776622525,
+  "Def_MIS": 1.004155620048584,
+  "Ratings": -0.6635233909065197
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc3ff"
+  },
+  "Team": "Fenerbahce Beko",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.0904427884044199,
+  "Def_MIS": 0.9170586578533299,
+  "Ratings": 13.870730444087211
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc401"
+  },
+  "Team": "Çağdaş Bodrum Spor",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9702630266562559,
+  "Def_MIS": 1.030648362894157,
+  "Ratings": -4.830826899032089
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc403"
+  },
+  "Team": "Anadolu Efes",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.060028925721275,
+  "Def_MIS": 0.9433704833286229,
+  "Ratings": 9.332675391412154
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc405"
+  },
+  "Team": "Turk Telekom",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.010362174002021,
+  "Def_MIS": 0.9897440994242919,
+  "Ratings": 1.6494459662183287
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc407"
+  },
+  "Team": "Galatasaray",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.0283521721500342,
+  "Def_MIS": 0.9724295110975878,
+  "Ratings": 4.473812884195712
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc409"
+  },
+  "Team": "Bahcesehir Koleji",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.0146032954482518,
+  "Def_MIS": 0.9856068913694978,
+  "Ratings": 2.3197123263003316
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc40b"
+  },
+  "Team": "Tofas SC",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.0155461124895828,
+  "Def_MIS": 0.9846918694302592,
+  "Ratings": 2.4683394447458937
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc40d"
+  },
+  "Team": "Pinar Karsiyaka",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.0237649183194197,
+  "Def_MIS": 0.9767867428408941,
+  "Ratings": 3.7582540382820477
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc40f"
+  },
+  "Team": "Besiktas Icrypex",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 1.030327097627578,
+  "Def_MIS": 0.9705655634046615,
+  "Ratings": 4.7809227378333174
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc411"
+  },
+  "Team": "Samsunspor DSI",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.8525294234814561,
+  "Def_MIS": 1.1729800432181232,
+  "Ratings": -25.63604957893337
+},
+{
+  "_id": {
+    "$oid": "6602d214c1996a6896fcc413"
+  },
+  "Team": "Merkezefendi Belediyesi Denizli Basket",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9715159021888994,
+  "Def_MIS": 1.0293192296152063,
+  "Ratings": -4.624266194104548
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd573d"
+  },
+  "Team": "Socar Petkimspor",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9931781470902381,
+  "Def_MIS": 1.006868710240704,
+  "Ratings": -1.0952450520372636
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5744"
+  },
+  "Team": "Cagdas Bodrum Spor",
+  "league_name": "Turkish-BSL",
+  "Att_MIS": 0.9568288990789873,
+  "Def_MIS": 1.045118935018129,
+  "Ratings": -7.063202875131336
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd574f"
+  },
+  "Team": "Moncada Agrigento",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.966803328517132,
+  "Def_MIS": 1.0343365299887668,
+  "Ratings": -5.402656117730783
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5751"
+  },
+  "Team": "Ferraroni Juvi Cremona",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9967223341841628,
+  "Def_MIS": 1.0032884442371004,
+  "Ratings": -0.525288804235008
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5753"
+  },
+  "Team": "Benacquista Assicurazioni Latina Basket",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.949892131971866,
+  "Def_MIS": 1.0527511138808108,
+  "Ratings": -8.228718552715582
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5755"
+  },
+  "Team": "GaGa Milano OrziBasket Orzinuovi",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.98844377077796,
+  "Def_MIS": 1.0116913369922345,
+  "Ratings": -1.8598052971419607
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5757"
+  },
+  "Team": "Pallacanestro Trieste 2004",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0061179030880711,
+  "Def_MIS": 0.9939192980571231,
+  "Ratings": 0.9758884024758421
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5759"
+  },
+  "Team": "Tramec Cento",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0022612553732937,
+  "Def_MIS": 0.9977438463662336,
+  "Ratings": 0.3613927205648005
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd575b"
+  },
+  "Team": "Blu Basket Gruppo Remer Treviglio",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0068693859152653,
+  "Def_MIS": 0.9931774806033843,
+  "Ratings": 1.0953524249504751
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd575d"
+  },
+  "Team": "Urania Milano",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9913019795571567,
+  "Def_MIS": 1.008774339830058,
+  "Ratings": -1.3977888218321
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd575f"
+  },
+  "Team": "Tezenis Scaligera Verona",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0174569636353878,
+  "Def_MIS": 0.9828425532879407,
+  "Ratings": 2.7691528277957818
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5761"
+  },
+  "Team": "UEB Gesteco Cividale",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.001944426672457,
+  "Def_MIS": 0.9980593467854152,
+  "Ratings": 0.31080639096335827
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5763"
+  },
+  "Team": "Unieuro Forli",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0314101400081788,
+  "Def_MIS": 0.9695464114712606,
+  "Ratings": 4.949098282953444
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5765"
+  },
+  "Team": "Umana Chiusi",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9671962467875221,
+  "Def_MIS": 1.0339163363396349,
+  "Ratings": -5.337607164169021
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5767"
+  },
+  "Team": "Zeus Energy Group Rieti",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.994180279563011,
+  "Def_MIS": 1.005853787845749,
+  "Ratings": -0.933880662619038
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5769"
+  },
+  "Team": "Old Wild West Udine",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0279397785718416,
+  "Def_MIS": 0.9728196348129852,
+  "Ratings": 4.409611500708514
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd576b"
+  },
+  "Team": "Acqua San Bernardo Cantu",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0365913569802574,
+  "Def_MIS": 0.964700306698627,
+  "Ratings": 5.751284022530433
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd576d"
+  },
+  "Team": "RivieraBanca Rimini",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0177042756356895,
+  "Def_MIS": 0.9826037130239714,
+  "Ratings": 2.8080450089374556
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd576f"
+  },
+  "Team": "2B Control Trapani",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0458990625192142,
+  "Def_MIS": 0.9561152082796028,
+  "Ratings": 7.182708339168915
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5771"
+  },
+  "Team": "Luiss Roma",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9616088902583191,
+  "Def_MIS": 1.039923829875749,
+  "Ratings": -6.265195169394385
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5773"
+  },
+  "Team": "UCC Assigeco Piacenza",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0146317702780325,
+  "Def_MIS": 0.9855792310997487,
+  "Ratings": 2.324203134262719
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5775"
+  },
+  "Team": "Reale Mutua Torino",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0166029095358402,
+  "Def_MIS": 0.9836682451131084,
+  "Ratings": 2.634773153818544
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5777"
+  },
+  "Team": "Fortituto Kontatto Bologna",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 1.0323383019466688,
+  "Def_MIS": 0.9686747049046914,
+  "Ratings": 5.093087763358188
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd5779"
+  },
+  "Team": "Novipiu Casale Monferrato",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9758183436659187,
+  "Def_MIS": 1.0247808995301693,
+  "Ratings": -3.917004469140047
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd577b"
+  },
+  "Team": "Pallacanestro Andrea Pasca Nardo",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9859559423536457,
+  "Def_MIS": 1.0142441026450213,
+  "Ratings": -2.2630528233100433
+},
+{
+  "_id": {
+    "$oid": "6602e38cc1996a6896fd577d"
+  },
+  "Team": "Elachem Vigevano",
+  "league_name": "Italian-Serie-A2-Basket",
+  "Att_MIS": 0.9720611568580253,
+  "Def_MIS": 1.0287418573871223,
+  "Ratings": -4.534456042327761
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020db"
+  },
+  "Team": "KK Dubrava Zagreb",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.0133859418132263,
+  "Def_MIS": 0.9867908747685259,
+  "Ratings": 2.1276053635760386
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020dd"
+  },
+  "Team": "KK Dubrovnik",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.9924378490845278,
+  "Def_MIS": 1.0076197727872305,
+  "Ratings": -1.2145538962162126
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020df"
+  },
+  "Team": "KK Cedevita Junior Zagreb",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.0185728311287263,
+  "Def_MIS": 0.9817658290491169,
+  "Ratings": 2.9445601663687566
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020e1"
+  },
+  "Team": "KK Dinamo",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.0209635173496527,
+  "Def_MIS": 0.9794669280601992,
+  "Ratings": 3.3197271431562814
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020e3"
+  },
+  "Team": "KK Split",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.083674911620424,
+  "Def_MIS": 0.9227859658619348,
+  "Ratings": 12.871115660679145
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020e5"
+  },
+  "Team": "KK Alkar",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.964024959848289,
+  "Def_MIS": 1.0373175401572303,
+  "Ratings": -5.863406424715308
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020e7"
+  },
+  "Team": "KK Cibona",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.9966369451990399,
+  "Def_MIS": 1.0033744031035177,
+  "Ratings": -0.5389966323582206
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020e9"
+  },
+  "Team": "KK Zadar",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.110236619582661,
+  "Def_MIS": 0.9007088960692914,
+  "Ratings": 16.762217881069564
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020eb"
+  },
+  "Team": "KK Skrljevo",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.9543796200820994,
+  "Def_MIS": 1.047801083508024,
+  "Ratings": -7.473717074073965
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020ed"
+  },
+  "Team": "KK Zabok",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.9826889969817729,
+  "Def_MIS": 1.0176159528308508,
+  "Ratings": -2.794156467926232
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020ef"
+  },
+  "Team": "KK Bosco Zagreb",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 0.8670473959616665,
+  "Def_MIS": 1.1533394883112151,
+  "Ratings": -22.903367387963897
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020f1"
+  },
+  "Team": "GKK Sibenk",
+  "league_name": "Croatian-A-1-Liga",
+  "Att_MIS": 1.0174176444898382,
+  "Def_MIS": 0.9828805362437255,
+  "Ratings": 2.762968659689008
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020f3"
+  },
+  "Team": "KK Sloboda Uzice",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.002665294851923,
+  "Def_MIS": 0.9973417900613419,
+  "Ratings": 0.425880383246486
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020f5"
+  },
+  "Team": "KK Zdravlje Leskovac",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9462885697562776,
+  "Def_MIS": 1.0567600961909076,
+  "Ratings": -8.837722114770397
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020f7"
+  },
+  "Team": "Radnicki 1950 Kragujevac",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.984803001893306,
+  "Def_MIS": 1.015431510746289,
+  "Ratings": -2.4502807082386333
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020f9"
+  },
+  "Team": "KK Mladost Admiral Zemun",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9973121552341231,
+  "Def_MIS": 1.0026950887460568,
+  "Ratings": -0.4306346809547019
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020fb"
+  },
+  "Team": "KK Cacak 94",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.0017525042082145,
+  "Def_MIS": 0.9982505616897858,
+  "Ratings": 0.28015540147430346
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020fd"
+  },
+  "Team": "KK Metalac Valjevo",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9686184151941446,
+  "Def_MIS": 1.0323982946365573,
+  "Ratings": -5.102390355393012
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a68960020ff"
+  },
+  "Team": "OKK Beograd",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9954214348200399,
+  "Def_MIS": 1.0045996248621953,
+  "Ratings": -0.7342552033724399
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002101"
+  },
+  "Team": "KK Vrsac Swisslion",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.0267178526719862,
+  "Def_MIS": 0.9739774149222648,
+  "Ratings": 4.219235019977724
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002103"
+  },
+  "Team": "KK Vojvodina Novi Sad",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.045159611722887,
+  "Def_MIS": 0.956791660128883,
+  "Ratings": 7.069436127520329
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002105"
+  },
+  "Team": "KK Spartak Subotica",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.0823589777258589,
+  "Def_MIS": 0.9239078906160108,
+  "Ratings": 12.676086968787853
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002107"
+  },
+  "Team": "KK Dynamic",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9997547357435321,
+  "Def_MIS": 1.0002453244257803,
+  "Ratings": -0.03924709457984967
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002109"
+  },
+  "Team": "KK Tamis",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9778323563456184,
+  "Def_MIS": 1.0226701883104243,
+  "Ratings": -3.587026557184476
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a689600210b"
+  },
+  "Team": "OKK Novi Pazar",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9542949308054356,
+  "Def_MIS": 1.0478940710247606,
+  "Ratings": -7.487931217546007
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a689600210d"
+  },
+  "Team": "Zlatibor Cajetina",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 1.0253040354831446,
+  "Def_MIS": 0.9753204565597751,
+  "Ratings": 3.998686313869557
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a689600210f"
+  },
+  "Team": "KK Sloga",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9884082103553841,
+  "Def_MIS": 1.0117277350827028,
+  "Ratings": -1.8655619781854984
+},
+{
+  "_id": {
+    "$oid": "6604050cc1996a6896002111"
+  },
+  "Team": "KK Joker Sombor",
+  "league_name": "Serbian-KLS",
+  "Att_MIS": 0.9993077613538339,
+  "Def_MIS": 1.0006927181724559,
+  "Ratings": -0.11079654548975588
+}]
